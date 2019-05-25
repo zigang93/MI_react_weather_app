@@ -17,6 +17,31 @@ const theme = createMuiTheme({
   }
 });
 
+// Fetch Data
+const data = [
+  {
+    id: 0,
+    date: '11 Jan 2017, Wednesday',
+    status: 'Thunderstorm',
+    from: 30,
+    to: 32
+  },
+  {
+    id: 1,
+    date: '12 Jan 2017, Thursday',
+    status: 'Rain',
+    from: 28,
+    to: 29
+  },
+  {
+    id: 2,
+    date: '13 Jan 2017, Friday',
+    status: 'Sun',
+    from: 29,
+    to: 34
+  }
+]
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -27,6 +52,7 @@ function App() {
       />
 
       <Container>
+
         <WeatherInfo 
           celsius='32' 
           city='Penang'
@@ -35,7 +61,9 @@ function App() {
           status='Thunderstorm'
         />
 
-        <ListFutureWeather />
+        <ListFutureWeather 
+          fetchWeatherData={data}
+        />
 
       </Container>
       
