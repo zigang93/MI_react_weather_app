@@ -37,7 +37,7 @@ export default function ListFutureWeatherDetail(props) {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
 
   inline: {
     display: 'inline',

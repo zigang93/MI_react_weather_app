@@ -72,6 +72,47 @@ export default class App extends Component {
     })
   }
 
+  // function handler
+  async handleSearchLocation(e) {
+
+    // if press enter
+    if (e.key === 'Enter') {
+      
+      const CITY = e.target.value;
+      const today = await getCurrentWeather(CITY);
+      const nextFiveDay = await getNextFiveDayWeather(CITY, 0)
+
+      if (today !== null && nextFiveDay !== null ) {
+        // format data
+        const country = getCountryName(today.sys.country)
+        const date = convertTimestamp(today.dt);
+
+        const list = nextFiveDay.map((data, i) => {
+            return {
+              id: i,
+              date: convertTimestamp(data.dt, 'list'),
+              status: data.weather[0].main,
+              min: Math.round(data.main.temp_min),
+              max: Math.round(data.main.temp_max)
+            }
+        })
+
+        // setState to latest info
+        this.setState({
+          // copy state
+          ...this.state,
+          city: today.name,
+          country: country,
+          todayCelsius: Math.round(today.main.temp),
+          weatherStatus: today.weather[0].main,
+          todayDate: date,
+          list
+        })
+      }
+
+    }
+  }
+
   render() {
 
     const { 
@@ -91,6 +132,7 @@ export default class App extends Component {
       <Header 
         appName={appName} 
         location={city}
+        onKeyPress={(e) => this.handleSearchLocation(e)}
       />
 
       <Container>

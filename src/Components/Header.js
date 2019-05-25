@@ -18,7 +18,7 @@ export default function Header(props) {
   const classes = useStyles();
 
   // props
-  const { appName, location } = props;
+  const { appName, location, onKeyPress } = props;
   
   return (
     <div className={classes.root}>
@@ -36,12 +36,11 @@ export default function Header(props) {
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
-              <InputBase
-                placeholder={location}
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
+              <input 
+                placeholder={location} 
+                className={classes.inputInput} 
+                type='text' 
+                onKeyPress={onKeyPress}
               />
             </div>
             
@@ -89,10 +88,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  inputRoot: {
-    color: 'inherit',
-  },
   inputInput: {
+    fontSize: '18px',
+    backgroundColor: 'transparent',
+    borderRadius: '4px',
+    outline: 'none',
+    border: 'none',
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -101,7 +102,7 @@ const useStyles = makeStyles(theme => ({
       '&:focus': {
         width: 200,
       },
-    },
+    }
   },
 }));
 

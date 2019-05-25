@@ -13,10 +13,13 @@ export const getCurrentWeather = async city => {
 
     // if error, get json message from api
     if (!response.ok) {
-      return alert(json.message)
+      // city not found
+      alert(json.message)
+      return null
     }
 
     // return json data
+    console.log(json)
     return json;
 
   } catch (err) {
@@ -33,17 +36,19 @@ export const getNextFiveDayWeather = async (city, cnt) => {
 
     const json = await response.json();
 
-    // if error, get json message from api
-    if (!response.ok) {
-      return console.log(json.message)
-    }
-
     const fivedayList = json.list.filter((el, i) => {
       // filter reverse modulo for 8 because each 8 is next day data
       return !(i % 8)
     })
 
-    return fivedayList;
+    // if error, get json message from api
+    if (!response.ok) {
+      return null
+    } else {
+      return fivedayList;
+    }
+
+    
 
   } catch(err) {
     console.log(err)
