@@ -21,5 +21,8 @@ repetitively, in different screens, projects, or by other team members.
 - [ ]  Use Redux.
 - [ ]  You may also integrate usage of CSS frameworks in the project, e.g. Tailwind
 
+## My Extra Features
+- [x] Add Search input to search from different location.
+
 
 
