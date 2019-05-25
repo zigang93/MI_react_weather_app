@@ -15,14 +15,13 @@ export default function ListFutureWeather(props) {
         {
           fetchWeatherData.map((list) => {
             return (
-              <React.Fragment>  
+              <React.Fragment key={list.id}>  
                 <div className={classes.conatainer}>
                 <ListFutureWeatherDetail 
-                  key={list.id}
                   date={list.date}
                   status={list.status}
-                  from={list.from}
-                  to={list.to}
+                  min={list.min}
+                  max={list.max}
                 />
                 </div>
                 <Divider component="li" />

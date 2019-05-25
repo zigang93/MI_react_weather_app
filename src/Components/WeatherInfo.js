@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 export default function WeatherInfo(props) {
   const classes = useStyles(); 
-  const { celsius, city, country, date, status } = props
+  const { celsius, city, country, date, timezone , status } = props
 
   return (
     <Card className={classes.card}>
@@ -24,7 +24,7 @@ export default function WeatherInfo(props) {
             {city}, {country}
           </Typography>
           <Typography className={classes.date}  align='left' variant='h6'>
-            {date}
+            {date} {timezone}
           </Typography>
           <Typography className={classes.status}  align='left' variant='h6'>
             {status}

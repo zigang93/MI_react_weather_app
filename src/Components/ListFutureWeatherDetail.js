@@ -8,7 +8,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 export default function ListFutureWeatherDetail(props) {
 
   const classes = useStyles();
-  const { key ,date, status, from , to } = props
+  const { key ,date, status, min , max } = props
 
   return (
     <ListItem alignItems="flex-start" key={key}>
@@ -29,7 +29,7 @@ export default function ListFutureWeatherDetail(props) {
         }
       />
       <ListItemSecondaryAction>
-        <Typography className={classes.celsius} >{from} °C - {to} °C</Typography>
+        <Typography className={classes.celsius} >{min} °C - {max} °C</Typography>
       </ListItemSecondaryAction>
 
     </ListItem>
