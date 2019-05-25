@@ -13,6 +13,10 @@ import { getCurrentWeather, getNextFiveDayWeather } from './api/weather-api'
 import { getCountryName } from './utils/getCountryName'
 import { convertTimestamp } from './utils/convertTimestamp'
 
+// Connect Redux
+import { connect } from 'react-redux';
+import { getAppName, fetchWeather , updateWeatherLocation} from './actions/weatherAction'
+
 // Change Themes Color
 const theme = createMuiTheme({
   palette: {
@@ -22,18 +26,7 @@ const theme = createMuiTheme({
   }
 });
 
-export default class App extends Component {
-
-  state = {
-    appName: '',
-    city: '',
-    country: '',
-    timezone: '',
-    weatherStatus: '',
-    todayCelsius: 0,
-    todayDate: '',
-    list: []
-  }
+class App extends Component {
 
   async componentDidMount() {
 
@@ -58,18 +51,10 @@ export default class App extends Component {
         }
     })
 
-    // setState when first render
-    this.setState({
-      // copy state
-      ...this.state,
-      appName: APP_NAME,
-      city: today.name,
-      country: country,
-      todayCelsius: Math.round(today.main.temp),
-      weatherStatus: today.weather[0].main,
-      todayDate: date,
-      list
-    })
+    const { fetchWeather, getAppName } = this.props
+    // redux dispatch props
+    fetchWeather(today, country, date, list);
+    getAppName(APP_NAME);
   }
 
   // function handler
@@ -97,17 +82,10 @@ export default class App extends Component {
             }
         })
 
-        // setState to latest info
-        this.setState({
-          // copy state
-          ...this.state,
-          city: today.name,
-          country: country,
-          todayCelsius: Math.round(today.main.temp),
-          weatherStatus: today.weather[0].main,
-          todayDate: date,
-          list
-        })
+        const { updateWeatherLocation } = this.props
+        // redux dispatch props
+        updateWeatherLocation(today, country, date, list);
+
       }
 
     }
@@ -123,8 +101,8 @@ export default class App extends Component {
       todayCelsius, 
       weatherStatus, 
       todayDate,
-      list 
-    } = this.state
+      list
+    } = this.props
 
     return (
     <ThemeProvider theme={theme}>
@@ -157,3 +135,24 @@ export default class App extends Component {
   }
 }
 
+// get state from redux
+const mapStateToProps = state => ({
+  appName: state.weatherReducer.appName,
+  city: state.weatherReducer.city,
+  country: state.weatherReducer.country,
+  timezone: state.weatherReducer.timezone,
+  weatherStatus: state.weatherReducer.weatherStatus,
+  todayCelsius: state.weatherReducer.todayCelsius,
+  todayDate: state.weatherReducer.todayDate,
+  list: state.weatherReducer.list,
+});
+
+// send action
+const mapDispatchToProps = dispatch => ({
+    getAppName: name => dispatch(getAppName(name)), 
+    fetchWeather: (today, country, date, list) => dispatch(fetchWeather(today, country, date, list)),
+    updateWeatherLocation: (today, country, date, list) => dispatch(updateWeatherLocation(today, country, date, list)),
+    
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
