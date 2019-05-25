@@ -13,9 +13,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Scoring Criteria
 - [x]  Accurate user interface implementation using Material UI.
-- [ ]  Presentable on different web browsers and responsive.
-- [ ]  Implementation of ReactJs best practices, e.g. reusable codes that can be used
+- [x]  Presentable on different web browsers and responsive.
+- [x]  Implementation of ReactJs best practices, e.g. reusable codes that can be used
 repetitively, in different screens, projects, or by other team members.
-- [ ]  Structured and clean codes.
+- [x]  Structured and clean codes.
+- [ ]  Use OpenWeatherMap API to obtain weather data.
+- [ ]  Use Redux.
+- [ ]  You may also integrate usage of CSS frameworks in the project, e.g. Tailwind
+
 
 
