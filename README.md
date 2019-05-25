@@ -18,8 +18,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 repetitively, in different screens, projects, or by other team members.
 - [x]  Structured and clean codes.
 - [x]  Use OpenWeatherMap API to obtain weather data.
-- [ ]  Use Redux.
-- [ ]  You may also integrate usage of CSS frameworks in the project, e.g. Tailwind
+- [x]  Use Redux.
+- [ ]  ~~You may also integrate usage of CSS frameworks in the project, e.g. Tailwind~~
 
 ## My Extra Features
 - [x] Add Search input to search from different location.
