@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - [x]  Implementation of ReactJs best practices, e.g. reusable codes that can be used
 repetitively, in different screens, projects, or by other team members.
 - [x]  Structured and clean codes.
-- [ ]  Use OpenWeatherMap API to obtain weather data.
+- [x]  Use OpenWeatherMap API to obtain weather data.
 - [ ]  Use Redux.
 - [ ]  You may also integrate usage of CSS frameworks in the project, e.g. Tailwind
 
